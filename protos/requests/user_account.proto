@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package golang_user_management.requests;
+
+option go_package = "github.com/MitP1997/golang-user-management/protos/requests;requests";
+
+message SignupRequest {
+    // @gotags: form_field:"given_name" form_field_type:"text" display_name:"Given Name"
+    string given_name = 1;
+    // @gotags: form_field:"family_name" form_field_type:"text" display_name:"Family Name"
+    string family_name = 2;
+    // @gotags: form_field:"email" form_field_type:"email" display_name:"Email"
+    string email = 3;
+    // @gotags: form_field:"password" form_field_type:"password" display_name:"Password"
+    string password = 4;
+ 
+}
+
+message LoginRequest {
+    // @gotags: form_field:"email" form_field_type:"email"
+    string email = 1;
+    // @gotags: form_field:"password" form_field_type:"password"
+    string password = 2;
+}
+
+message VerifyEmailRequest {
+    // @gotags: form_field:"otp" form_field_type:"text"
+    string otp = 1;
+}
+
+message ChangePasswordInitiateRequest {
+    // @gotags: form_field:"email" form_field_type:"email"
+    string email = 1;
+}
+
+message ChangePasswordRequest {
+    // @gotags: form_field:"email" form_field_type:"email"
+    string email = 1;
+    // @gotags: form_field:"otp" form_field_type:"text"
+    string otp = 2;
+    // @gotags: form_field:"password" form_field_type:"password"
+    string password = 3;
+}

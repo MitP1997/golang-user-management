@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package golang_user_management.models;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/MitP1997/golang-user-management/protos/models;models";
+
+enum UserStatus {
+    UNVERIFIED = 0;
+    VERIFIED = 1;
+    DELETED = 2;
+}
+
+message User {
+    // @gotags: bson:"_id,omitempty"
+    string id = 1;
+    // @gotags: bson:"given_name"
+    string given_name = 2;
+    // @gotags: bson:"family_name"
+    string family_name = 3;
+    // @gotags: bson:"email" validate:"email" index:"unique"
+    string email = 4;
+    // @gotags: bson:"status" index:"exists"
+    UserStatus status = 5;
+    // @gotags: bson:"password"
+    string password = 6;
+    // @gotags: bson:"created_at"
+    google.protobuf.Timestamp created_at = 7;
+    // @gotags: bson:"updated_at"
+    google.protobuf.Timestamp updated_at = 8;
+    // @gotags: bson:"verified_at"
+    google.protobuf.Timestamp verified_at = 9;
+    // @gotags: bson:"deleted_at"
+    google.protobuf.Timestamp deleted_at = 10;
+}
